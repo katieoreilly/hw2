@@ -92,8 +92,6 @@ warner_bros = Studio.new
 warner_bros["name"] = "Warner Bros."
 warner_bros.save
 
-puts "There are #{Studio.all.count} studios"
-
 batman_begins = Movie.new
 batman_begins["title"] = "Batman Begins"
 batman_begins["year_released"] = 2005
@@ -114,8 +112,6 @@ the_dark_knight_rises["year_released"] = 2012
 the_dark_knight_rises["rated"] = "PG-13"
 the_dark_knight_rises["studio_id"] = warner_bros["id"]
 the_dark_knight_rises.save
-
-puts "There are #{Movie.all.count} movies"
 
 christian_bale = Actor.new
 christian_bale["name"] = "Christian Bale"
@@ -160,8 +156,6 @@ joseph_gordon_levitt.save
 anne_hathaway = Actor.new
 anne_hathaway["name"] = "Anne Hathaway"
 anne_hathaway.save
-
-puts "There are #{Actor.all.count} actors"
 
 bruce_wayne_1 = Role.new
 bruce_wayne_1["character_name"] = "Bruce Wayne"
@@ -253,9 +247,6 @@ selina_kyle["movie_id"] = the_dark_knight_rises["id"]
 selina_kyle["actor_id"] = anne_hathaway["id"]
 selina_kyle.save
 
-puts "There are #{Role.all.count} roles"
-
-
 # Prints a header for the movies output
 puts "Movies"
 puts "======"
@@ -263,6 +254,12 @@ puts ""
 
 # Query the movies data and loop through the results to display the movies output.
 # TODO!
+
+all_movies = Movie.all
+
+for movie in all_movies
+    puts "#{movie["title"]} #{movie["year_released"]} #{movie["rated"]} #{movie["studio_id"]}"
+end
 
 # Prints a header for the cast output
 puts ""
@@ -272,3 +269,9 @@ puts ""
 
 # Query the cast data and loop through the results to display the cast output for each movie.
 # TODO!
+
+all_roles = Role.all
+
+for role in all_roles
+    puts "#{role["movie_id"]} #{role["actor_id"]} #{role["character_name"]}"
+end 
